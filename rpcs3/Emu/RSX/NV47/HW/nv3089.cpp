@@ -517,6 +517,10 @@ namespace rsx
 				}
 
 				linear_pixels = sw_temp.data();
+
+				// The padded buffer is tightly packed at the power-of-two width,
+				// so the swizzle pass must walk it at that pitch, not the source pitch.
+				linear_pitch = sw_width * out_bpp;
 			}
 
 			switch (out_bpp)
